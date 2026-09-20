@@ -19,6 +19,15 @@
   --color-sage: #969783;
   --color-mist: #A7AAA5;
   --color-wheat: #C9AE7C;
+
+  /* Added from the Altheara Design System (consolidates one-off hex values used in components) */
+  --color-paper: #FAF8F3;      /* light page / card surface (was #FAF9F6, #FAF9F5, #FAF8F3, #FBF9F4) */
+  --color-hairline: #E4DCCE;   /* decorative lines on paper */
+  --color-bark: #5A5248;       /* secondary text on paper (7.2:1) */
+  --color-brass: #A68A56;      /* ✦ marks and thin rules on paper (not for text) */
+  --color-brass-deep: #7E6337; /* gold TEXT on paper (5.3:1) */
+  --color-hearth: #2C2824;     /* raised dark surface / dark button hover */
+  --color-night: #12110F;      /* site footer */
 }
 
 :root {

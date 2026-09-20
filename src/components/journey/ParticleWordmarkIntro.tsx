@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useRef, useEffect, useState } from "react";
 
@@ -44,12 +44,14 @@ export function ParticleWordmarkIntro({
   const [isReducedMotion, setIsReducedMotion] = useState(false);
 
   const progressRef = useRef(sceneProgress);
-  progressRef.current = sceneProgress;
+  useEffect(() => {
+    progressRef.current = sceneProgress;
+  }, [sceneProgress]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-      setIsReducedMotion(mediaQuery.matches);
+      setIsReducedMotion(mediaQuery.matches); // eslint-disable-line react-hooks/set-state-in-effect
     }
   }, []);
 
@@ -69,9 +71,28 @@ export function ParticleWordmarkIntro({
     let particles: Particle[] = [];
     let width = window.innerWidth;
     let height = window.innerHeight;
-    const startTime = performance.now();
+    let startTime = performance.now();
     let hasTriggeredThreshold = false;
     let isFullyFormed = false;
+    // Replay support: once the wordmark has started dissolving, returning to the very top
+    // of the page re-runs the load-in formation from the left edge.
+    let hasDissolved = false;
+    let isLoopRunning = true;
+    const TOP_THRESHOLD_PX = 4;
+
+    const resetFormation = (now: number) => {
+      startTime = now;
+      isFullyFormed = false;
+      hasTriggeredThreshold = false;
+      hasDissolved = false;
+      for (const p of particles) {
+        p.released = false;
+        p.x = p.originX;
+        p.y = p.originY;
+        p.currentOpacity = 0;
+      }
+      if (onDissolveThresholdReached) onDissolveThresholdReached(false);
+    };
 
     // Palette: Soft warm white, warm ivory, soft cream, champagne, pale gold
     const coreColors: [number, number, number][] = [
@@ -243,6 +264,11 @@ export function ParticleWordmarkIntro({
 
     // Main Render Loop
     const render = (now: number) => {
+      // Back at the top after the wordmark dissolved: replay the load-in.
+      if (hasDissolved && window.scrollY <= TOP_THRESHOLD_PX) {
+        resetFormation(now);
+      }
+
       const elapsed = (now - startTime) / 1000;
       const scrollP = progressRef.current;
 
@@ -264,8 +290,12 @@ export function ParticleWordmarkIntro({
         if (onDissolveThresholdReached) onDissolveThresholdReached(true);
       }
 
-      if (scrollP > 0.85) {
+      if (scrollP > 0.85 && window.scrollY > TOP_THRESHOLD_PX) {
         if (onDissolveThresholdReached) onDissolveThresholdReached(true);
+        // Fully scrolled past the intro: park the loop (no wasted frames) until the user returns to the top.
+        hasDissolved = true;
+        isLoopRunning = false;
+        ctx.clearRect(0, 0, width, height);
         return;
       }
 
@@ -280,6 +310,7 @@ export function ParticleWordmarkIntro({
         if (isUserScrolling) {
           if (dissolveProgress > p.releaseDelay && !p.released) {
             p.released = true;
+            hasDissolved = true;
             p.vx = 2.8 + Math.random() * 3.5 + dissolveProgress * 4.0;
             p.vy = (Math.sin(timeSec * 2.5 + p.phase) - 0.1) * 1.5;
           }
@@ -350,8 +381,19 @@ export function ParticleWordmarkIntro({
 
     animationFrameId = requestAnimationFrame(render);
 
+    // Wake the parked loop when the user scrolls back to the top.
+    const handleScrollToTop = () => {
+      if (!isLoopRunning && window.scrollY <= TOP_THRESHOLD_PX) {
+        resetFormation(performance.now());
+        isLoopRunning = true;
+        animationFrameId = requestAnimationFrame(render);
+      }
+    };
+    window.addEventListener("scroll", handleScrollToTop, { passive: true });
+
     return () => {
       window.removeEventListener("resize", initSimulation);
+      window.removeEventListener("scroll", handleScrollToTop);
       cancelAnimationFrame(animationFrameId);
     };
   }, [isReducedMotion]);

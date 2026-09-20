@@ -43,7 +43,7 @@ export function JourneyStage({
     let opacity = "0";
     let scale = "1.0";
     let translateX = "0px";
-    let translateY = "0px";
+    const translateY = "0px";
     let origin = "center";
     let zIndex = 1;
 
@@ -415,7 +415,7 @@ export function JourneyStage({
               style={getCopyStyles(activeSceneIndex)}
             >
               {currentScene.copy?.eyebrow && (
-                <span className="font-sans text-[10px] sm:text-[11px] uppercase tracking-[0.25em] font-bold text-wheat drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
+                <span className="font-sans text-xs uppercase tracking-[0.25em] font-bold text-wheat drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
                   {currentScene.copy.eyebrow}
                 </span>
               )}
@@ -425,12 +425,12 @@ export function JourneyStage({
                 </h1>
               )}
               {currentScene.copy?.supporting && (
-                <p className="font-reading text-base sm:text-lg md:text-xl leading-relaxed mt-2 text-linen/90 font-light drop-shadow-[0_1px_10px_rgba(0,0,0,0.7)]">
+                <p className="font-reading text-base sm:text-lg md:text-xl leading-relaxed mt-2 text-linen/90 drop-shadow-[0_1px_10px_rgba(0,0,0,0.7)]">
                   {currentScene.copy.supporting}
                 </p>
               )}
               {currentScene.copy?.microcopy && (
-                <span className="font-sans text-[9px] uppercase tracking-[0.2em] font-semibold mt-4 text-stone drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
+                <span className="font-sans text-xs uppercase tracking-[0.2em] font-semibold mt-4 text-stone drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
                   {currentScene.copy.microcopy}
                 </span>
               )}
@@ -467,7 +467,7 @@ export function JourneyStage({
               className="flex flex-col gap-3 transition-all duration-300 mb-6"
               style={getDoorwayStyles("headline")}
             >
-              <span className="font-sans text-[10px] sm:text-[11px] uppercase tracking-[0.25em] font-bold text-wheat drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
+              <span className="font-sans text-xs uppercase tracking-[0.25em] font-bold text-wheat drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
                 THE THRESHOLD
               </span>
               <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-ivory font-normal leading-[1.08] tracking-tight drop-shadow-[0_2px_20px_rgba(0,0,0,0.8)]">
@@ -483,7 +483,7 @@ export function JourneyStage({
                 className="absolute inset-0 flex flex-col justify-start transition-all duration-300"
                 style={getDoorwayStyles(1)}
               >
-                <p className="font-reading text-base sm:text-lg md:text-xl text-linen/95 leading-relaxed font-light drop-shadow-[0_1px_10px_rgba(0,0,0,0.8)]">
+                <p className="font-reading text-base sm:text-lg md:text-xl text-linen/95 leading-relaxed drop-shadow-[0_1px_10px_rgba(0,0,0,0.8)]">
                   Altheara begins with the moments you choose to keep. A thought. A feeling. Something your child said. A question you can&apos;t stop thinking about. A day that changed you—or one that seemed ordinary at the time.
                 </p>
               </div>
@@ -493,7 +493,7 @@ export function JourneyStage({
                 className="absolute inset-0 flex flex-col justify-start transition-all duration-300"
                 style={getDoorwayStyles(2)}
               >
-                <p className="font-reading text-base sm:text-lg md:text-xl text-linen/95 leading-relaxed font-light drop-shadow-[0_1px_10px_rgba(0,0,0,0.8)]">
+                <p className="font-reading text-base sm:text-lg md:text-xl text-linen/95 leading-relaxed drop-shadow-[0_1px_10px_rgba(0,0,0,0.8)]">
                   Each Echo gives Altheara another piece of the life you&apos;re living. It reflects those moments back to you, and as they accumulate, begins to understand the patterns, people, questions, changes, and seasons running through them. Over time, Altheara becomes more than a place that remembers what happened. It becomes a place that can help you see what your life has been saying.
                 </p>
               </div>
@@ -503,7 +503,7 @@ export function JourneyStage({
                 className="absolute inset-0 flex flex-col justify-start transition-all duration-300"
                 style={getDoorwayStyles(3)}
               >
-                <p className="font-reading text-base sm:text-lg md:text-xl text-linen/95 leading-relaxed font-light drop-shadow-[0_1px_10px_rgba(0,0,0,0.8)]">
+                <p className="font-reading text-base sm:text-lg md:text-xl text-linen/95 leading-relaxed drop-shadow-[0_1px_10px_rgba(0,0,0,0.8)]">
                   The moments become connected stories. Stories become years. Years become Volumes. And those Volumes become a private record of a life that could never be recreated later—because it was captured while it was being lived.
                 </p>
               </div>
@@ -531,15 +531,15 @@ export function JourneyStage({
             className={`flex flex-col gap-3 transition-all duration-300 ${getCopyAlignment(currentScene.id)}`}
             style={getCopyStyles(activeSceneIndex)}
           >
-            <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-wheat font-bold drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
+            <span className="font-sans text-xs tracking-[0.25em] uppercase text-wheat font-bold drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
               ECHO
             </span>
-            <blockquote className="font-reading text-xl sm:text-2xl md:text-3xl leading-relaxed font-light text-ivory drop-shadow-[0_2px_14px_rgba(0,0,0,0.7)]">
+            <blockquote className="font-reading text-xl sm:text-2xl md:text-3xl leading-relaxed text-ivory drop-shadow-[0_2px_14px_rgba(0,0,0,0.7)]">
               &ldquo;{currentScene.copy?.echo}&rdquo;
             </blockquote>
             <div className="flex items-center gap-2 mt-2">
               <div className="w-1.5 h-1.5 rounded-full bg-wheat animate-pulse" />
-              <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-stone font-medium drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
+              <span className="font-sans text-xs uppercase tracking-[0.2em] text-stone font-medium drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
                 {currentScene.copy?.supporting}
               </span>
             </div>
@@ -554,13 +554,13 @@ export function JourneyStage({
               className="flex flex-col gap-4 text-left"
               style={getDailyLoopStyles("intro")}
             >
-              <span className="font-sans text-[10px] uppercase tracking-[0.25em] text-wheat font-bold drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
+              <span className="font-sans text-xs uppercase tracking-[0.25em] text-wheat font-bold drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
                 THE DAILY LOOP
               </span>
               <h1 className="font-display text-3xl sm:text-4xl md:text-5xl text-ivory font-normal leading-tight drop-shadow-[0_2px_16px_rgba(0,0,0,0.7)]">
                 IT STARTS SMALL.
               </h1>
-              <p className="font-reading text-base sm:text-lg text-linen/90 leading-relaxed max-w-md font-light drop-shadow-[0_1px_10px_rgba(0,0,0,0.7)]">
+              <p className="font-reading text-base sm:text-lg text-linen/90 leading-relaxed max-w-md drop-shadow-[0_1px_10px_rgba(0,0,0,0.7)]">
                 One moment is enough. Altheara is designed around a simple daily loop. You arrive, leave what is present, and return to your life.
               </p>
             </div>
@@ -570,10 +570,10 @@ export function JourneyStage({
               className="flex justify-center md:justify-end"
               style={getDailyLoopStyles("ui")}
             >
-              <div className="w-full max-w-sm bg-[#faf9f6] text-espresso p-6 sm:p-8 rounded-sm shadow-[0_16px_48px_rgba(0,0,0,0.3)] border border-stone/20 flex flex-col gap-5 pointer-events-auto">
+              <div className="w-full max-w-sm bg-paper text-espresso p-6 sm:p-8 rounded-sm shadow-[0_16px_48px_rgba(0,0,0,0.3)] border border-stone/20 flex flex-col gap-5 pointer-events-auto">
                 <div className="flex justify-between items-center border-b border-stone/15 pb-3">
-                  <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-taupe font-bold">ECHO PROMPT</span>
-                  <span className="font-sans text-[9px] text-stone">10:14 AM</span>
+                  <span className="font-sans text-xs uppercase tracking-[0.2em] text-taupe font-bold">ECHO PROMPT</span>
+                  <span className="font-sans text-xs text-stone">10:14 AM</span>
                 </div>
                 <div>
                   <p className="font-reading text-sm italic text-stone mb-2">What happened today that you wanted to stay in a little longer?</p>
@@ -582,10 +582,10 @@ export function JourneyStage({
                   </div>
                 </div>
                 <div className="flex justify-between items-center mt-2">
-                  <button className="bg-[#1c1916] text-[#faf9f6] font-sans text-[9px] uppercase tracking-[0.2em] font-semibold px-4 py-2.5 rounded-sm hover:bg-[#342c24] transition-colors">
+                  <button className="bg-charcoal text-paper font-sans text-xs uppercase tracking-[0.2em] font-semibold px-4 py-2.5 rounded-sm hover:bg-espresso transition-colors">
                     ADD ECHO TO YOUR STORY
                   </button>
-                  <span className="font-sans text-[9px] text-wheat uppercase tracking-wider font-bold">ADDED</span>
+                  <span className="font-sans text-xs text-wheat uppercase tracking-wider font-bold">ADDED</span>
                 </div>
               </div>
             </div>
@@ -598,13 +598,13 @@ export function JourneyStage({
             className={`flex flex-col gap-4 transition-all duration-300 ${getCopyAlignment(currentScene.id)}`}
             style={getCopyStyles(activeSceneIndex)}
           >
-            <span className="font-sans text-[10px] uppercase tracking-[0.25em] text-wheat font-semibold drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
+            <span className="font-sans text-xs uppercase tracking-[0.25em] text-wheat font-semibold drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
               REFLECTION
             </span>
             <h1 className="font-display text-3xl sm:text-4xl md:text-5xl text-ivory leading-tight font-normal drop-shadow-[0_2px_16px_rgba(0,0,0,0.7)]">
               {currentScene.copy?.headline}
             </h1>
-            <blockquote className="font-reading text-lg text-linen/90 italic border-l-2 border-wheat/40 pl-4 mt-2 font-light drop-shadow-[0_1px_10px_rgba(0,0,0,0.7)]">
+            <blockquote className="font-reading text-lg text-linen/90 italic border-l-2 border-wheat/40 pl-4 mt-2 drop-shadow-[0_1px_10px_rgba(0,0,0,0.7)]">
               &ldquo;{currentScene.copy?.echo}&rdquo;
             </blockquote>
           </div>
@@ -618,15 +618,15 @@ export function JourneyStage({
               className="absolute inset-0 flex flex-col gap-3 transition-all duration-300"
               style={getMorphStyles(6, "echo")}
             >
-              <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-wheat font-bold drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
+              <span className="font-sans text-xs tracking-[0.25em] uppercase text-wheat font-bold drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
                 ECHO
               </span>
-              <blockquote className="font-reading text-xl sm:text-2xl md:text-3xl text-ivory leading-relaxed font-light drop-shadow-[0_2px_14px_rgba(0,0,0,0.7)]">
+              <blockquote className="font-reading text-xl sm:text-2xl md:text-3xl text-ivory leading-relaxed drop-shadow-[0_2px_14px_rgba(0,0,0,0.7)]">
                 &ldquo;{currentScene.copy?.echo}&rdquo;
               </blockquote>
               <div className="flex items-center gap-2 mt-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-wheat" />
-                <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-stone font-medium drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
+                <span className="font-sans text-xs uppercase tracking-[0.2em] text-stone font-medium drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
                   {currentScene.copy?.supporting}
                 </span>
               </div>
@@ -637,10 +637,10 @@ export function JourneyStage({
               className="absolute inset-0 flex flex-col gap-3 transition-all duration-300"
               style={getMorphStyles(6, "reflection")}
             >
-              <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-wheat font-bold drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
+              <span className="font-sans text-xs tracking-[0.25em] uppercase text-wheat font-bold drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
                 REFLECTION
               </span>
-              <blockquote className="font-reading text-lg sm:text-xl md:text-2xl text-linen leading-relaxed italic font-light pl-4 border-l-2 border-wheat/50 drop-shadow-[0_2px_14px_rgba(0,0,0,0.7)]">
+              <blockquote className="font-reading text-lg sm:text-xl md:text-2xl text-linen leading-relaxed italic pl-4 border-l-2 border-wheat/50 drop-shadow-[0_2px_14px_rgba(0,0,0,0.7)]">
                 {currentScene.copy?.reflection}
               </blockquote>
             </div>
@@ -659,7 +659,7 @@ export function JourneyStage({
                 ONE MOMENT CAN TELL YOU SOMETHING.
               </h1>
               <p 
-                className="font-reading text-lg sm:text-xl md:text-2xl text-linen/90 leading-relaxed font-light drop-shadow-[0_1px_10px_rgba(0,0,0,0.7)] transition-all duration-300"
+                className="font-reading text-lg sm:text-xl md:text-2xl text-linen/90 leading-relaxed drop-shadow-[0_1px_10px_rgba(0,0,0,0.7)] transition-all duration-300"
                 style={getLensIntroStyles("subline")}
               >
                 Years of moments can show you something else.
@@ -675,11 +675,11 @@ export function JourneyStage({
               ].map((obs, idx) => (
                 <div 
                   key={idx}
-                  className="bg-[#faf9f6]/95 backdrop-blur-md px-5 py-4 sm:px-6 sm:py-4.5 rounded-sm border border-[#B8A78E]/30 shadow-[0_8px_32px_rgba(0,0,0,0.25)] flex gap-4 items-center transition-all duration-300 pointer-events-auto"
+                  className="bg-paper/95 backdrop-blur-md px-5 py-4 sm:px-6 sm:py-4.5 rounded-sm border border-stone/30 shadow-[0_8px_32px_rgba(0,0,0,0.25)] flex gap-4 items-center transition-all duration-300 pointer-events-auto"
                   style={getLensObsStyles(idx as 0 | 1 | 2)}
                 >
                   <div className="w-1.5 h-1.5 rounded-full bg-wheat shrink-0" />
-                  <p className="font-reading text-sm sm:text-base text-espresso italic leading-relaxed font-light">
+                  <p className="font-reading text-sm sm:text-base text-espresso italic leading-relaxed">
                     {obs}
                   </p>
                 </div>
@@ -691,7 +691,7 @@ export function JourneyStage({
                 style={getLensLabelStyles()}
               >
                 <div className="h-px w-6 bg-wheat/60" />
-                <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-wheat font-bold drop-shadow-[0_1px_6px_rgba(0,0,0,0.8)]">
+                <span className="font-sans text-xs uppercase tracking-[0.3em] text-wheat font-bold drop-shadow-[0_1px_6px_rgba(0,0,0,0.8)]">
                   LENS
                 </span>
               </div>
@@ -707,15 +707,15 @@ export function JourneyStage({
               className="absolute inset-0 flex flex-col gap-3 transition-all duration-300"
               style={getMorphStyles(9, "echo")}
             >
-              <span className="font-sans text-[10px] tracking-[0.25em] uppercase text-wheat font-bold drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
+              <span className="font-sans text-xs tracking-[0.25em] uppercase text-wheat font-bold drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
                 ECHO
               </span>
-              <blockquote className="font-reading text-xl sm:text-2xl md:text-3xl text-ivory leading-relaxed font-light drop-shadow-[0_2px_14px_rgba(0,0,0,0.7)]">
+              <blockquote className="font-reading text-xl sm:text-2xl md:text-3xl text-ivory leading-relaxed drop-shadow-[0_2px_14px_rgba(0,0,0,0.7)]">
                 &ldquo;{currentScene.copy?.echo}&rdquo;
               </blockquote>
               <div className="flex items-center gap-2 mt-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-wheat animate-pulse" />
-                <span className="font-sans text-[9px] uppercase tracking-[0.2em] text-stone font-medium drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
+                <span className="font-sans text-xs uppercase tracking-[0.2em] text-stone font-medium drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
                   ADDED TO YOUR STORY
                 </span>
               </div>
@@ -729,7 +729,7 @@ export function JourneyStage({
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-ivory font-normal leading-tight drop-shadow-[0_2px_16px_rgba(0,0,0,0.7)]">
                 SOME MOMENTS CHANGE WHAT COMES AFTER THEM.
               </h2>
-              <p className="font-reading text-base sm:text-lg text-linen/90 italic mt-2 font-light drop-shadow-[0_1px_10px_rgba(0,0,0,0.7)]">
+              <p className="font-reading text-base sm:text-lg text-linen/90 italic mt-2 drop-shadow-[0_1px_10px_rgba(0,0,0,0.7)]">
                 Some absences become part of everything that follows.
               </p>
             </div>
@@ -757,13 +757,13 @@ export function JourneyStage({
                 ))`
               }}
             >
-              <span className="font-sans text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-wheat font-bold drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
+              <span className="font-sans text-xs uppercase tracking-[0.25em] text-wheat font-bold drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
                 STORY FORMATION
               </span>
               <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-ivory font-normal leading-[1.08] tracking-tight drop-shadow-[0_2px_20px_rgba(0,0,0,0.8)]">
                 WHAT FELT SEPARATE<br />BEGINS TO BECOME A STORY.
               </h1>
-              <p className="font-reading text-base sm:text-lg md:text-xl text-linen/90 italic font-light drop-shadow-[0_1px_10px_rgba(0,0,0,0.8)] max-w-lg mt-1">
+              <p className="font-reading text-base sm:text-lg md:text-xl text-linen/90 italic drop-shadow-[0_1px_10px_rgba(0,0,0,0.8)] max-w-lg mt-1">
                 An Echo is a moment. A Story is what becomes visible between them.
               </p>
             </div>
@@ -788,27 +788,27 @@ export function JourneyStage({
             >
               {/* 1. The Unified Archival Manuscript Page */}
               <div
-                className="absolute inset-0 bg-[#faf8f3] text-[#2c241d] p-6 sm:p-8 md:p-9 rounded-sm shadow-[0_24px_60px_rgba(0,0,0,0.35)] border border-[#e4dcce] flex flex-col justify-between z-10 pointer-events-auto"
+                className="absolute inset-0 bg-paper text-espresso p-6 sm:p-8 md:p-9 rounded-sm shadow-[0_24px_60px_rgba(0,0,0,0.35)] border border-hairline flex flex-col justify-between z-10 pointer-events-auto"
               >
                 {/* Book Header / Folio */}
-                <div className="flex justify-between items-center border-b border-[#e4dcce]/70 pb-2">
-                  <span className="font-sans text-[9px] uppercase tracking-[0.25em] text-[#8c8275] font-semibold">
+                <div className="flex justify-between items-center border-b border-hairline/70 pb-2">
+                  <span className="font-sans text-xs uppercase tracking-[0.25em] text-taupe font-semibold">
                     VOLUME I &middot; CHAPTER III
                   </span>
-                  <span className="font-reading text-[10px] text-[#8c8275] italic">
+                  <span className="font-reading text-xs text-taupe italic">
                     Autumn
                   </span>
                 </div>
 
                 {/* Chapter Title */}
                 <div className="pt-1.5 pb-0.5">
-                  <h3 className="font-display text-xs sm:text-sm tracking-wider uppercase text-[#1c1916] font-normal">
+                  <h3 className="font-display text-xs sm:text-sm tracking-wider uppercase text-charcoal font-normal">
                     WE DIDN&apos;T KNOW IT WAS A SEASON
                   </h3>
                 </div>
 
                 {/* Unified Prose */}
-                <div className="font-reading text-[11px] sm:text-xs md:text-[12.5px] text-[#2c241d] leading-[1.6] sm:leading-[1.7] font-light flex flex-col gap-2 py-1 overflow-y-auto max-h-[300px] sm:max-h-[340px] pr-1">
+                <div className="font-reading text-xs md:text-[12.5px] text-espresso leading-[1.6] sm:leading-[1.7] flex flex-col gap-2 py-1 overflow-y-auto max-h-[300px] sm:max-h-[340px] pr-1">
                   <p>
                     There was a stretch of life when our house was rarely quiet.
                   </p>
@@ -830,13 +830,13 @@ export function JourneyStage({
                   <p>
                     Like most seasons of life, nobody told us when it began. Nobody warned us when it was ending. We just lived it.
                   </p>
-                  <p className="italic text-[#786b5b] pt-0.5 font-normal">
+                  <p className="italic text-taupe pt-0.5 font-normal">
                     And for a while, the house was full.
                   </p>
                 </div>
 
                 {/* Page Footer Folio */}
-                <div className="border-t border-[#e4dcce]/50 pt-2 flex justify-between items-center text-[9px] font-sans text-[#a89c8a] tracking-widest uppercase">
+                <div className="border-t border-hairline/50 pt-2 flex justify-between items-center text-xs font-sans text-taupe tracking-widest uppercase">
                   <span>Altheara Archive</span>
                   <span>42</span>
                 </div>
@@ -866,13 +866,13 @@ export function JourneyStage({
                   return (
                     <div
                       key={idx}
-                      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-3 sm:px-5 sm:py-3.5 bg-[#fbf9f4] text-[#2c241d] rounded-xs shadow-[0_8px_24px_rgba(0,0,0,0.22)] border border-[#e4dcce]/70 transition-all duration-300 max-w-[240px] sm:max-w-[280px]"
+                      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-3 sm:px-5 sm:py-3.5 bg-paper text-espresso rounded-xs shadow-[0_8px_24px_rgba(0,0,0,0.22)] border border-hairline/70 transition-all duration-300 max-w-[240px] sm:max-w-[280px]"
                       style={{
                         transform: `translate3d(calc(-50% + ${posX}), calc(-50% + ${posY}), 0) rotate(${rot})`,
                         opacity: slipInOpacity
                       }}
                     >
-                      <p className="font-reading text-xs sm:text-sm leading-relaxed italic text-[#2c241d] font-light">
+                      <p className="font-reading text-xs sm:text-sm leading-relaxed italic text-espresso">
                         {frag.text}
                       </p>
                     </div>
@@ -891,16 +891,16 @@ export function JourneyStage({
             className={`flex flex-col gap-3.5 transition-all duration-300 ${getCopyAlignment(currentScene.id)}`}
             style={getCopyStyles(activeSceneIndex)}
           >
-            <span className="font-sans text-[10px] uppercase tracking-[0.25em] text-wheat font-bold drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
+            <span className="font-sans text-xs uppercase tracking-[0.25em] text-wheat font-bold drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
               THE ARTIFACT
             </span>
             <h1 className="font-display text-3xl sm:text-4xl md:text-5xl text-ivory font-normal leading-[1.08] tracking-tight drop-shadow-[0_2px_16px_rgba(0,0,0,0.7)]">
               YOUR LIFE, RETURNED TO YOU AS A STORY.
             </h1>
-            <p className="font-reading text-base sm:text-lg text-linen/90 leading-relaxed mt-1 font-light drop-shadow-[0_1px_10px_rgba(0,0,0,0.7)]">
+            <p className="font-reading text-base sm:text-lg text-linen/90 leading-relaxed mt-1 drop-shadow-[0_1px_10px_rgba(0,0,0,0.7)]">
               The moments were small when they happened. Together, they became a chapter.
             </p>
-            <p className="font-reading text-base text-linen/75 italic mt-0.5 font-light drop-shadow-[0_1px_10px_rgba(0,0,0,0.7)]">
+            <p className="font-reading text-base text-linen/75 italic mt-0.5 drop-shadow-[0_1px_10px_rgba(0,0,0,0.7)]">
               You didn&apos;t have to remember your life later. You kept it while you were living it.
             </p>
           </div>
@@ -977,7 +977,7 @@ export function JourneyStage({
               ONE YEAR BECOMES A VOLUME.
             </h1>
             <div 
-              className="font-reading text-lg sm:text-xl md:text-2xl text-linen/90 leading-relaxed font-light drop-shadow-[0_1px_10px_rgba(0,0,0,0.8)] flex flex-col gap-1 transition-all duration-300"
+              className="font-reading text-lg sm:text-xl md:text-2xl text-linen/90 leading-relaxed drop-shadow-[0_1px_10px_rgba(0,0,0,0.8)] flex flex-col gap-1 transition-all duration-300"
               style={{
                 opacity: `calc(
                   clamp(0, (var(--progress-scene-16, 0) - 0.28) / 0.12, 1) * 
@@ -997,7 +997,7 @@ export function JourneyStage({
           <div className="flex flex-col gap-4 text-right ml-auto max-w-lg pr-2 sm:pr-0 z-40">
             {/* Eyebrow */}
             <span 
-              className="font-sans text-[10px] uppercase tracking-[0.25em] text-wheat font-bold drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)] transition-all duration-300"
+              className="font-sans text-xs uppercase tracking-[0.25em] text-wheat font-bold drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)] transition-all duration-300"
               style={{
                 opacity: `calc(
                   clamp(0, (var(--progress-scene-17, 0) - 0.62) / 0.08, 1) * 
@@ -1025,7 +1025,7 @@ export function JourneyStage({
 
             {/* Supporting line with emphasized long-term value thesis */}
             <p 
-              className="font-reading text-base sm:text-lg md:text-xl text-linen/90 leading-relaxed mt-1 font-light drop-shadow-[0_1px_10px_rgba(0,0,0,0.8)] transition-all duration-300"
+              className="font-reading text-base sm:text-lg md:text-xl text-linen/90 leading-relaxed mt-1 drop-shadow-[0_1px_10px_rgba(0,0,0,0.8)] transition-all duration-300"
               style={{
                 opacity: `calc(
                   clamp(0, (var(--progress-scene-17, 0) - 0.74) / 0.08, 1) * 
@@ -1068,7 +1068,7 @@ export function JourneyStage({
               className="absolute inset-x-0 top-0 flex flex-col gap-3 transition-all duration-300 max-w-lg"
               style={getLookbackStyles(3)}
             >
-              <p className="font-reading text-lg sm:text-xl md:text-2xl text-linen/90 leading-relaxed font-light drop-shadow-[0_2px_14px_rgba(0,0,0,0.8)]">
+              <p className="font-reading text-lg sm:text-xl md:text-2xl text-linen/90 leading-relaxed drop-shadow-[0_2px_14px_rgba(0,0,0,0.8)]">
                 Everything between where you began<br className="hidden sm:inline" /> and where you are now<br className="hidden sm:inline" /> had somewhere to go.
               </p>
             </div>

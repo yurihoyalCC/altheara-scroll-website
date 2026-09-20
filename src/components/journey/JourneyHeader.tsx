@@ -44,7 +44,7 @@ export function JourneyHeader({ activeSceneId, onOpenBeginModal }: JourneyHeader
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-out px-6 py-4 md:px-12 md:py-5 flex items-center justify-between pointer-events-auto ${
         isPastCinematic
-          ? "bg-[#FAF9F5]/92 text-[#1C1916] backdrop-blur-md border-b border-[#E4DCCE] shadow-xs"
+          ? "bg-paper/92 text-charcoal backdrop-blur-md border-b border-hairline shadow-xs"
           : "bg-transparent text-ivory"
       }`}
     >
@@ -58,7 +58,7 @@ export function JourneyHeader({ activeSceneId, onOpenBeginModal }: JourneyHeader
           }}
           className={`font-sans text-xs sm:text-sm tracking-[0.3em] font-bold transition-colors duration-300 ${
             isPastCinematic 
-              ? "text-[#1C1916] hover:text-[#A68A56]" 
+              ? "text-charcoal hover:text-brass-deep" 
               : "text-ivory drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)] hover:text-wheat"
           }`}
         >
@@ -68,7 +68,7 @@ export function JourneyHeader({ activeSceneId, onOpenBeginModal }: JourneyHeader
 
       {/* Full Navigation Links (Revealed ONLY in Product/Footer Section) */}
       <nav 
-        className={`hidden md:flex items-center gap-8 text-[11px] font-sans uppercase tracking-[0.2em] font-medium transition-all duration-500 ${
+        className={`hidden md:flex items-center gap-8 text-xs font-sans uppercase tracking-[0.2em] font-medium transition-all duration-500 ${
           isPastCinematic 
             ? "opacity-100 translate-y-0 pointer-events-auto" 
             : "opacity-0 -translate-y-2 pointer-events-none"
@@ -76,31 +76,31 @@ export function JourneyHeader({ activeSceneId, onOpenBeginModal }: JourneyHeader
       >
         <button 
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="text-[#5A5248] hover:text-[#1C1916] transition-colors cursor-pointer"
+          className="text-bark hover:text-charcoal transition-colors cursor-pointer"
         >
           Experience
         </button>
         <button 
           onClick={() => document.getElementById("runway-8")?.scrollIntoView({ behavior: "smooth" })}
-          className="text-[#5A5248] hover:text-[#1C1916] transition-colors cursor-pointer"
+          className="text-bark hover:text-charcoal transition-colors cursor-pointer"
         >
           How It Grows
         </button>
         <button 
           onClick={() => document.getElementById("runway-13")?.scrollIntoView({ behavior: "smooth" })}
-          className="text-[#5A5248] hover:text-[#1C1916] transition-colors cursor-pointer"
+          className="text-bark hover:text-charcoal transition-colors cursor-pointer"
         >
           The Artifact
         </button>
         <button 
           onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
-          className="text-[#5A5248] hover:text-[#1C1916] transition-colors cursor-pointer"
+          className="text-bark hover:text-charcoal transition-colors cursor-pointer"
         >
           Pricing
         </button>
         <a 
           href="#pricing" 
-          className="text-[#5A5248] hover:text-[#1C1916] transition-colors"
+          className="text-bark hover:text-charcoal transition-colors"
         >
           Sign In
         </a>
@@ -111,9 +111,9 @@ export function JourneyHeader({ activeSceneId, onOpenBeginModal }: JourneyHeader
         <AudioToggle isPastCinematic={isPastCinematic} />
         <button
           onClick={handleCtaClick}
-          className={`font-sans text-[10px] uppercase tracking-[0.22em] font-bold px-5 py-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+          className={`font-sans text-xs uppercase tracking-[0.22em] font-bold px-5 py-2.5 rounded-full transition-all duration-300 cursor-pointer ${
             isPastCinematic
-              ? "bg-[#1C1916] text-[#FAF9F6] hover:bg-[#2C2824] shadow-sm"
+              ? "bg-charcoal text-paper hover:bg-hearth shadow-sm"
               : idNum === 1
               ? "bg-wheat text-espresso hover:bg-wheat/90 shadow-[0_2px_12px_rgba(201,174,124,0.3)]"
               : "border border-linen/30 text-linen hover:bg-linen/10 hover:text-ivory backdrop-blur-sm shadow-[0_1px_8px_rgba(0,0,0,0.5)]"
