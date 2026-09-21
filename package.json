@@ -1,26 +1,24 @@
 {
-  "name": "altheara-journey",
+  "name": "altheara",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
-  },
-  "dependencies": {
-    "next": "16.3.3",
+  "description": "Altheara — the place where a life is kept.",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "//": "overrides: pins ONE React across the workspace. Expo's packages declare `react: *` as a peer, so without this npm installs a second copy alongside the apps' own and Metro bundles both, which breaks hooks. 19.2.8 satisfies Next 16 (^19.0.0) and react-native 0.86.3 (^19.2.3). Bump the apps and this override together.",
+  "overrides": {
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },
-  "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.3.3",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+  "scripts": {
+    "dev": "npm run dev -w @altheara/web",
+    "build": "npm run build -w @altheara/web",
+    "start": "npm run start -w @altheara/web",
+    "lint": "npm run lint -w @altheara/web",
+    "typecheck": "tsc --noEmit -p apps/web && tsc --noEmit -p packages/design && tsc --noEmit -p apps/mobile",
+    "tokens": "npm run build -w @altheara/design",
+    "mobile": "npm run start -w @altheara/mobile"
   }
 }
