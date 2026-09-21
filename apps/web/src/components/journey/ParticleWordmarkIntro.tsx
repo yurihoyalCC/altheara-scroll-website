@@ -160,6 +160,12 @@ export function ParticleWordmarkIntro({
         }
       }
 
+      // Release the offscreen canvas's backing store now that it has been sampled.
+      // iOS Safari frees canvas memory lazily and kills the tab once a fixed canvas
+      // budget is exceeded, so abandoned canvases must be shrunk to zero explicitly.
+      offCanvas.width = 0;
+      offCanvas.height = 0;
+
       const allPoints = [...corePoints, ...edgePoints];
       if (allPoints.length === 0) return;
 
@@ -260,7 +266,21 @@ export function ParticleWordmarkIntro({
       });
     }
 
-    window.addEventListener("resize", initSimulation);
+    // Mobile browsers fire `resize` continuously while the address bar collapses and
+    // expands during scrolling. Those are height-only changes that don't move the
+    // wordmark, so rebuild only when the width changes (rotation, window resize), and
+    // debounce that — each rebuild reallocates the canvas and resamples the letterforms.
+    let lastWidth = width;
+    let resizeTimer: ReturnType<typeof setTimeout> | undefined;
+    const handleResize = () => {
+      if (window.innerWidth === lastWidth) return;
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        lastWidth = window.innerWidth;
+        initSimulation();
+      }, 150);
+    };
+    window.addEventListener("resize", handleResize);
 
     // Main Render Loop
     const render = (now: number) => {
@@ -392,7 +412,8 @@ export function ParticleWordmarkIntro({
     window.addEventListener("scroll", handleScrollToTop, { passive: true });
 
     return () => {
-      window.removeEventListener("resize", initSimulation);
+      window.removeEventListener("resize", handleResize);
+      clearTimeout(resizeTimer);
       window.removeEventListener("scroll", handleScrollToTop);
       cancelAnimationFrame(animationFrameId);
     };
