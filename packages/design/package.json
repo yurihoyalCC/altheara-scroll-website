@@ -1,0 +1,17 @@
+{
+  "name": "@altheara/design",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Altheara design tokens — one source of truth for web and mobile.",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./theme.css": "./theme.css"
+  },
+  "files": ["src", "theme.css"],
+  "scripts": {
+    "build": "node scripts/build-css.ts"
+  }
+}
