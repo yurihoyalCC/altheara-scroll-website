@@ -43,6 +43,11 @@ Observant, warm, specific, restrained — never therapist, coach or cheerleader.
 ## Working agreements
 - Run `npm run lint` and `npm run typecheck` from the repo root before committing; the repo is currently at 0 lint errors.
 - If you touched a token, also run `npm run tokens` and commit the regenerated `packages/design/theme.css` alongside the source change.
+- **Never commit a `package-lock.json` that was regenerated from scratch while `node_modules` existed.** npm reconciles against that tree and silently drops every native binary for other platforms, so the lockfile ends up Windows-only and the Vercel (Linux) build dies on `globals.css` with a missing `lightningcss` binary. Local lint, typecheck and build all still pass, so nothing catches it. Before committing a regenerated lockfile, check it still covers Linux:
+  ```bash
+  grep -c '"node_modules/lightningcss-linux-x64-gnu"' package-lock.json
+  ```
+  It must print `1`, and `grep -c '(linux|darwin|win32)'` across the lockfile should be in the seventies, not single digits. If it isn't, regenerate in an empty directory containing only the four `package.json` files, then copy the result back.
 - Branch for anything non-trivial (`fix/…`, `feat/…`), and say what changed in plain language.
 - Don't reintroduce `apps/web/public/new_media_*.jpg` (deleted duplicates).
 - The audio intro cannot truly autoplay: browsers require a click/tap/key first. `AudioToggle` attempts playback, then starts on the first real gesture, and the label must always tell the truth.
