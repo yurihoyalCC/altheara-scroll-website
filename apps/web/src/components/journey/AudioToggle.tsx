@@ -30,7 +30,10 @@ export function AudioToggle({
     if (fadeRef.current) cancelAnimationFrame(fadeRef.current);
     const start = performance.now();
     const step = (now: number) => {
-      const t = Math.min((now - start) / 1500, 1);
+      // rAF hands back the timestamp of the frame's start, which can fall a fraction
+      // of a millisecond before `start`. Without the lower clamp that makes t negative,
+      // and assigning a negative volume throws.
+      const t = Math.min(Math.max((now - start) / 1500, 0), 1);
       audio.volume = TARGET_VOLUME * t;
       if (t < 1) fadeRef.current = requestAnimationFrame(step);
     };
