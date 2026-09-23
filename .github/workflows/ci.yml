@@ -1,0 +1,69 @@
+name: CI
+
+# Runs the checks CLAUDE.md asks for before committing, on Linux — the platform
+# Vercel builds on. Local checks on Windows all passed while the committed
+# lockfile was missing every Linux native binary, and production broke anyway.
+# The point of this workflow is that the build is exercised somewhere other than
+# a contributor's laptop.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# A newer push to the same branch makes an in-flight run irrelevant.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          # Matches the Node version the Vercel project builds with.
+          node-version: '24'
+          cache: npm
+
+      # Fails loudly and specifically if the lockfile was regenerated on a
+      # machine that pruned other platforms' native packages. `npm ci` below
+      # would fail too, but with a stack trace that buries the real cause.
+      - name: Check lockfile covers Linux
+        run: |
+          if ! grep -q '"node_modules/lightningcss-linux-x64-gnu"' package-lock.json; then
+            echo "::error file=package-lock.json::Lockfile is missing lightningcss-linux-x64-gnu."
+            echo "It was probably regenerated while node_modules existed, which drops every"
+            echo "other platform's native binaries. See the working agreements in CLAUDE.md."
+            exit 1
+          fi
+
+      - name: Install
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build
+        run: npm run build
+
+      # The committed theme.css must match what the token source generates,
+      # otherwise the site ships colours that no longer exist in colors.ts.
+      - name: Design tokens are up to date
+        run: |
+          npm run tokens
+          if ! git diff --quiet -- packages/design/theme.css; then
+            echo "::error file=packages/design/theme.css::theme.css does not match the token source."
+            echo "Run 'npm run tokens' and commit the regenerated file."
+            git diff -- packages/design/theme.css
+            exit 1
+          fi
