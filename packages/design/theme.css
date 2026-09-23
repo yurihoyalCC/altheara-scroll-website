@@ -1,0 +1,33 @@
+/*
+ * GENERATED FILE — do not edit by hand.
+ * Source: packages/design/src/colors.ts, packages/design/src/typography.ts
+ * Regenerate with: npm run tokens
+ */
+
+@theme {
+  /* Font Family Tokens — each indirects through the variable next/font injects on <html> */
+  --font-display: var(--font-display), Georgia, serif;
+  --font-reading: var(--font-reading), Georgia, serif;
+  --font-sans: var(--font-ui), system-ui, sans-serif;
+
+  /* Altheara Color Tokens */
+  --color-ivory: #F4EFE6;
+  --color-linen: #E9E2D6;
+  --color-parchment: #DDD1BC;
+  --color-stone: #B8A78E;
+  --color-taupe: #786B5B;
+  --color-woodland: #55483A;
+  --color-espresso: #342C24;
+  --color-charcoal: #1C1916;
+  --color-olive: #72745E;
+  --color-sage: #969783;
+  --color-mist: #A7AAA5;
+  --color-wheat: #C9AE7C;
+  --color-paper: #FAF8F3;
+  --color-hairline: #E4DCCE;
+  --color-bark: #5A5248;
+  --color-brass: #A68A56;
+  --color-brass-deep: #7E6337;
+  --color-hearth: #2C2824;
+  --color-night: #12110F;
+}

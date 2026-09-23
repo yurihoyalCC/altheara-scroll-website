@@ -1,8 +1,10 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Patterns are deliberately NOT anchored with a leading slash: they must match
+# inside every workspace (apps/web, apps/mobile, packages/design), not just the root.
 
 # dependencies
-/node_modules
-/.pnp
+node_modules/
+.pnp
 .pnp.*
 .yarn/*
 !.yarn/patches
@@ -11,14 +13,32 @@
 !.yarn/versions
 
 # testing
-/coverage
+coverage/
 
 # next.js
-/.next/
-/out/
+.next/
+out/
+
+# expo
+.expo/
+dist/
+web-build/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# native builds
+apps/mobile/ios/
+apps/mobile/android/
 
 # production
-/build
+build/
+
+# claude code — share launch.json, never the worktree checkouts living under .claude/
+.claude/worktrees/
 
 # misc
 .DS_Store

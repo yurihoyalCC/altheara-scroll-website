@@ -1,0 +1,27 @@
+@import "tailwindcss";
+@import "@altheara/design/theme.css";
+
+:root {
+  background-color: #1C1916; /* start dark to match cinematic cottage backdrop */
+  color: #F4EFE6;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-charcoal);
+  color: var(--color-ivory);
+}
+
+/* Custom smooth transition utility for scroll scrollytelling */
+.transition-all-scroll {
+  transition-property: transform, opacity, filter;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  transition-duration: 400ms;
+}
+
+/* Hide scrollbar for immersive visual walk but still allow scrolling */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-charcoal); }
+::-webkit-scrollbar-thumb { background: var(--color-stone); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-wheat); }
