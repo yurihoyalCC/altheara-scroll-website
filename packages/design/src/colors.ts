@@ -7,6 +7,10 @@
  *   - muted text uses `taupe`, never `stone`
  *   - gold text uses `brassDeep`; `brass` and `wheat` are for marks,
  *     thin rules and dark surfaces only
+ *
+ * Editing this file alone does not change the site: apps/web reads the
+ * generated theme.css, so a token change only reaches production once
+ * `npm run tokens` has been run and that file committed alongside it.
  */
 export const colors = {
   /** Warmest light surface — the page ground on light scenes */
